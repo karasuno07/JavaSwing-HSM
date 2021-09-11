@@ -1,0 +1,515 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.16.0.final using JasperReports Library version 6.16.0-48579d909b7943b64690c65c71e07e0b80981928  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="HoaDonThu" printOrder="Horizontal" pageWidth="396" pageHeight="612" columnWidth="356" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="8ced3f5b-1347-4a20-9c20-b4261b7734ef">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="QuanLyBanHang"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w1" value="274"/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w2" value="717"/>
+	<parameter name="MaHD" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT (SELECT SUM(ThanhTien) FROM HoaDonChiTiet WHERE MaHD = $P{MaHD} ) AS SUM, ROW_NUMBER() OVER (ORDER BY MaHDCT) AS rowNumber, HoaDon.MaHD, NgayLapHD, TenNV, TenKH, KhachHang.SDT, KhachHang.DiaChi, MaHang, TenHang, SoLuong, DonGia, ThanhTien, PhuThu, ChietKhau, TongTien
+FROM HoaDonChiTiet
+JOIN HoaDon ON HoaDonChiTiet.MaHD = HoaDon.MaHD
+JOIN NhanVien ON HoaDon.MaNV = NhanVien.MaNV
+JOIN KhachHang ON HoaDon.MaKH = KhachHang.MaKH
+WHERE HoaDon.MaHD =  $P{MaHD}]]>
+	</queryString>
+	<field name="SUM" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.name" value="SUM"/>
+		<property name="com.jaspersoft.studio.field.label" value="SUM"/>
+	</field>
+	<field name="rowNumber" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="rowNumber"/>
+		<property name="com.jaspersoft.studio.field.label" value="rowNumber"/>
+	</field>
+	<field name="MaHD" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="MaHD"/>
+		<property name="com.jaspersoft.studio.field.label" value="MaHD"/>
+	</field>
+	<field name="NgayLapHD" class="java.util.Date">
+		<property name="com.jaspersoft.studio.field.name" value="NgayLapHD"/>
+		<property name="com.jaspersoft.studio.field.label" value="NgayLapHD"/>
+	</field>
+	<field name="TenNV" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="TenNV"/>
+		<property name="com.jaspersoft.studio.field.label" value="TenNV"/>
+	</field>
+	<field name="TenKH" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="TenKH"/>
+		<property name="com.jaspersoft.studio.field.label" value="TenKH"/>
+	</field>
+	<field name="SDT" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="SDT"/>
+		<property name="com.jaspersoft.studio.field.label" value="SDT"/>
+	</field>
+	<field name="DiaChi" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="DiaChi"/>
+		<property name="com.jaspersoft.studio.field.label" value="DiaChi"/>
+	</field>
+	<field name="MaHang" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="MaHang"/>
+		<property name="com.jaspersoft.studio.field.label" value="MaHang"/>
+	</field>
+	<field name="TenHang" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="TenHang"/>
+		<property name="com.jaspersoft.studio.field.label" value="TenHang"/>
+	</field>
+	<field name="SoLuong" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="SoLuong"/>
+		<property name="com.jaspersoft.studio.field.label" value="SoLuong"/>
+	</field>
+	<field name="DonGia" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.name" value="DonGia"/>
+		<property name="com.jaspersoft.studio.field.label" value="DonGia"/>
+	</field>
+	<field name="ThanhTien" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.name" value="ThanhTien"/>
+		<property name="com.jaspersoft.studio.field.label" value="ThanhTien"/>
+	</field>
+	<field name="PhuThu" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.name" value="PhuThu"/>
+		<property name="com.jaspersoft.studio.field.label" value="PhuThu"/>
+	</field>
+	<field name="ChietKhau" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.name" value="ChietKhau"/>
+		<property name="com.jaspersoft.studio.field.label" value="ChietKhau"/>
+	</field>
+	<field name="TongTien" class="java.lang.Double">
+		<property name="com.jaspersoft.studio.field.name" value="TongTien"/>
+		<property name="com.jaspersoft.studio.field.label" value="TongTien"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="90" splitType="Stretch">
+			<staticText>
+				<reportElement x="78" y="0" width="200" height="36" uuid="d15e8c62-e51a-44d4-90f1-92cf5996b56d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Cambria" size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[HÓA ĐƠN BÁN HÀNG]]></text>
+			</staticText>
+			<image hAlign="Center" vAlign="Middle">
+				<reportElement mode="Transparent" x="300" y="0" width="60" height="60" uuid="40cc1b6b-19a0-4894-bc3e-156561e9da33"/>
+				<imageExpression><![CDATA["https://yt3.ggpht.com/ytc/AAUvwnhRHbjb5hForUyYwuqAmP4zAY7zjYFSCOkRXcuT=s900-c-k-c0x00ffffff-no-rj"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="100" splitType="Stretch">
+			<staticText>
+				<reportElement x="17" y="2" width="50" height="20" uuid="d97bc681-fcea-4245-817b-2206cf310de3">
+					<property name="com.jaspersoft.studio.data.defaultdataadapter" value="QuanLyBanHang"/>
+					<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+					<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w1" value="274"/>
+					<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w2" value="717"/>
+					<property name="com.jaspersoft.studio.unit." value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.pageHeight" value="inch"/>
+					<property name="com.jaspersoft.studio.unit.pageWidth" value="inch"/>
+					<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Số hóa đơn:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="78" y="2" width="85" height="20" uuid="344a0037-c1a9-4a8c-9506-a83844ef659a">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{MaHD}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="16" y="32" width="50" height="20" uuid="a8c14e0a-15cf-4fe9-93a0-736fcb111205">
+					<property name="com.jaspersoft.studio.data.defaultdataadapter" value="QuanLyBanHang"/>
+					<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+					<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w1" value="274"/>
+					<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w2" value="717"/>
+					<property name="com.jaspersoft.studio.unit." value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.pageHeight" value="inch"/>
+					<property name="com.jaspersoft.studio.unit.pageWidth" value="inch"/>
+					<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Ngày tạo:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="78" y="32" width="85" height="20" uuid="5528bae3-34ea-4888-94f8-e47866e5c6f7">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new SimpleDateFormat("HH:mm:ss dd/MM/yyyy").format($F{NgayLapHD})]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="16" y="64" width="50" height="20" uuid="fd8cd367-3403-4bfe-b01b-7b2668c07efe">
+					<property name="com.jaspersoft.studio.data.defaultdataadapter" value="QuanLyBanHang"/>
+					<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+					<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w1" value="274"/>
+					<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w2" value="717"/>
+					<property name="com.jaspersoft.studio.unit." value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.pageHeight" value="inch"/>
+					<property name="com.jaspersoft.studio.unit.pageWidth" value="inch"/>
+					<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Nhân viên: ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="78" y="64" width="85" height="20" uuid="e6985ba5-8409-4921-aeb6-446b0f5a45aa">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{TenNV}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="201" y="2" width="40" height="20" uuid="e2ae6f01-0c91-4c31-b977-977c948c6b09">
+					<property name="com.jaspersoft.studio.data.defaultdataadapter" value="QuanLyBanHang"/>
+					<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+					<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w1" value="274"/>
+					<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w2" value="717"/>
+					<property name="com.jaspersoft.studio.unit." value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.pageHeight" value="inch"/>
+					<property name="com.jaspersoft.studio.unit.pageWidth" value="inch"/>
+					<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Khách hàng:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="249" y="2" width="95" height="20" uuid="900d916f-0af0-4d80-a27e-33a19503a21f">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{TenKH}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="200" y="32" width="40" height="20" uuid="e7e93a1a-cc34-4846-afd1-a32b5cee6461">
+					<property name="com.jaspersoft.studio.data.defaultdataadapter" value="QuanLyBanHang"/>
+					<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+					<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w1" value="274"/>
+					<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w2" value="717"/>
+					<property name="com.jaspersoft.studio.unit." value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.pageHeight" value="inch"/>
+					<property name="com.jaspersoft.studio.unit.pageWidth" value="inch"/>
+					<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[SĐT:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="249" y="32" width="95" height="20" uuid="6ae01eb8-d540-445c-ba56-06a3fb468a79">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SDT}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="200" y="64" width="40" height="20" uuid="5bea12e1-f1e1-44e7-a3df-0ab76a000a78">
+					<property name="com.jaspersoft.studio.data.defaultdataadapter" value="QuanLyBanHang"/>
+					<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+					<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w1" value="274"/>
+					<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w2" value="717"/>
+					<property name="com.jaspersoft.studio.unit." value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.pageHeight" value="inch"/>
+					<property name="com.jaspersoft.studio.unit.pageWidth" value="inch"/>
+					<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Địa chỉ:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="249" y="64" width="95" height="20" uuid="008c0132-3119-4ef1-8786-85c4361a0d52">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{DiaChi}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="30" splitType="Stretch">
+			<rectangle>
+				<reportElement x="290" y="0" width="65" height="30" uuid="a5c8b5cb-ac60-4ed4-819f-a877a0beb650"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement x="290" y="0" width="65" height="30" uuid="25a14acd-2cbe-4713-a72d-ad44893ae497"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Thành tiền]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="30" y="0" width="70" height="30" uuid="e9838d86-8a39-4705-82bc-271be7154128"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement x="30" y="0" width="70" height="30" uuid="62f815b5-5651-46bf-8bad-cf86327d6d8d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Mã hàng]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="230" y="0" width="60" height="30" uuid="85c2e52b-ee4d-4c52-8d3e-2620621f15e6"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="190" y="0" width="40" height="30" uuid="3681b62c-b31b-4992-b085-933f54853bd0"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+				</graphicElement>
+			</rectangle>
+			<rectangle>
+				<reportElement x="100" y="0" width="90" height="30" uuid="48dcd43a-2438-4f89-8c20-3860ed5a548c"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement x="100" y="0" width="90" height="30" uuid="d626cbef-c7fc-4831-b966-9656b0fcde86"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tên hàng]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="190" y="0" width="40" height="30" uuid="29b930ad-f195-4e44-acd4-a24176ac7dba"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="230" y="0" width="60" height="30" uuid="52fa15b3-6300-465c-b22d-fec70958216f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Giá bán]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="0" y="0" width="30" height="30" uuid="a7aa5984-6c13-44c7-83e9-f971ff7c1f6e"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement x="0" y="0" width="30" height="30" uuid="5575e685-9431-421f-906c-6f7e4592a61c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[#]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="41" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="14" width="30" height="24" uuid="6e30dd3b-4f52-45b5-9d57-312c97bdcc4e">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rowNumber}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="30" y="14" width="70" height="24" uuid="e0dcdfc5-2c7b-4c65-94f4-50797fdd346f">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{MaHang}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="100" y="14" width="90" height="24" uuid="efa48e78-7ebd-428a-aeee-f96200f359be">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{TenHang}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="190" y="14" width="40" height="24" uuid="9395d106-2e25-40d2-b498-d8175c1bc9e9">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SoLuong}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="230" y="14" width="60" height="24" uuid="e2e8be7d-eb98-4523-8a40-c272fac65107">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[String.format("%.0f", $F{DonGia})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="290" y="14" width="65" height="24" uuid="cd93848f-0685-410f-8afd-ccf83372e732">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[String.format("%.0f", $F{ThanhTien})]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="1" y="40" width="355" height="1" uuid="a54dc0a2-538c-4c24-bb0d-adc736364c87"/>
+				<graphicElement>
+					<pen lineWidth="0.75" lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="120" splitType="Stretch">
+			<staticText>
+				<reportElement x="200" y="7" width="70" height="20" uuid="cbc673b5-af75-4f18-b3f6-23bc51d1d5c3"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[Tổng tiền hàng:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="270" y="7" width="90" height="20" uuid="4d99e5b6-e66e-4006-9b41-6c0da0e3c9f5"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[String.format("%.0f VNĐ", $F{SUM})]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="200" y="33" width="70" height="20" uuid="523a63a9-a1be-4269-aa19-40da20e2f469"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[Giảm giá:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="270" y="33" width="90" height="20" uuid="db960a0c-149b-4357-871f-aee6c8a9b857"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[String.format("%.0f VNĐ", $F{ChietKhau})]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="200" y="59" width="70" height="20" uuid="c1aba364-c606-4af0-9169-bd4d59230a91"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[Phụ thu:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="270" y="59" width="90" height="20" uuid="fd62a5dd-a5d1-4526-ae3a-5ff3e1f79a33"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[String.format("%.0f VNĐ", $F{PhuThu})]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="200" y="85" width="70" height="20" uuid="72ba9052-fa12-491b-8c76-5cc28404f2b9"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Thanh toán:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="270" y="85" width="90" height="20" uuid="e2ee5b27-0179-4d9b-b890-a5a24d9ada05"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[String.format("%.0f VNĐ", $F{TongTien})]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="30" splitType="Stretch">
+			<staticText>
+				<reportElement x="78" y="0" width="200" height="30" uuid="4002e99c-adc4-44d2-bd43-58b98bd02de9"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Cambria" size="14" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Café Nhân Phẩm]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+</jasperReport>
